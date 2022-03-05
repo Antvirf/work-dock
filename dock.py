@@ -13,6 +13,7 @@ work_apps = [
 # Defines desired alias
 alias_name = 'workdock'
 alias_string = """alias {}="python {}\"""".format(alias_name, os.path.realpath(__file__))
+terminal_rc = '.zshrc'
 
 # Some issue with system preferences?
 # Dock addition source https://stackoverflow.com/questions/59614341/add-terminal-to-dock-persistent-apps-with-default-write-with-foreign-language-ma/59637792#59637792
@@ -23,7 +24,7 @@ alias_string = """alias {}="python {}\"""".format(alias_name, os.path.realpath(_
 
 def append_to_bash_rc(alias):
     homefolder = os.path.expanduser('~')
-    bashrc = os.path.abspath('%s/.bash_profile' % homefolder)
+    bashrc = os.path.abspath('{}/{}'.format(homefolder, terminal_rc))
 
     pattern = re.compile(alias)
     if os.path.isfile(bashrc):
